@@ -25,20 +25,22 @@
     <!-- meta -->
 
 
-<title>no title | Hexo</title>
+<title>用阿里云部署 Tiny Tiny RSS | Hexo</title>
 
+
+    <meta name="keywords" content="Tiny Tiny RSS, 阿里云服务器, docker, docker-compose">
 
 
 
 
     <!-- OpenGraph -->
  
-    <meta name="description" content="title:”用阿里云部署TTRSS”date:2020-11-12tags:[“TTRSS”]series:[“实用性-阐述规则”]  准备资料   云服务器：阿里云服务器【本次使用】；vultr服务器 SSH：xft6  控制台：Xshell  完成备案的域名——域名注册与备案参考文章：域名注册与备案流程   部署云服务器利用阿里云部署服务器 购买云服务器——以购买轻量应用服务器为例，进入阿">
+    <meta name="description" content="准备资料   云服务器：阿里云服务器【本次使用】；vultr服务器 SSH：xft6  控制台：Xshell  完成备案的域名——域名注册与备案参考文章：域名注册与备案流程   部署云服务器利用阿里云部署服务器 购买云服务器——以购买轻量应用服务器为例，进入阿里云轻量应用服务器购买页面   选择服务器类型   配置云服务器部署位置、性能、时间等  选择部署位置   选择服务器系统镜像——以 Cen">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://znizn.github.io/myblog/2020/12/01/TT-RSS%EF%BC%9A%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/index.html">
+<meta property="og:title" content="用阿里云部署 Tiny Tiny RSS">
+<meta property="og:url" content="https://znizn.github.io/myblog/2020/11/12/TT-RSS%EF%BC%9A%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="title:”用阿里云部署TTRSS”date:2020-11-12tags:[“TTRSS”]series:[“实用性-阐述规则”]  准备资料   云服务器：阿里云服务器【本次使用】；vultr服务器 SSH：xft6  控制台：Xshell  完成备案的域名——域名注册与备案参考文章：域名注册与备案流程   部署云服务器利用阿里云部署服务器 购买云服务器——以购买轻量应用服务器为例，进入阿">
+<meta property="og:description" content="准备资料   云服务器：阿里云服务器【本次使用】；vultr服务器 SSH：xft6  控制台：Xshell  完成备案的域名——域名注册与备案参考文章：域名注册与备案流程   部署云服务器利用阿里云部署服务器 购买云服务器——以购买轻量应用服务器为例，进入阿里云轻量应用服务器购买页面   选择服务器类型   配置云服务器部署位置、性能、时间等  选择部署位置   选择服务器系统镜像——以 Cen">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201120140558560.png">
 <meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201120140726238.png">
@@ -73,9 +75,13 @@
 <meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201120143952279.png">
 <meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201120144047551.png">
 <meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201120145557348.png">
-<meta property="article:published_time" content="2020-12-01T13:52:55.406Z">
-<meta property="article:modified_time" content="2020-11-29T07:15:58.828Z">
+<meta property="article:published_time" content="2020-11-11T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-12-01T14:18:51.677Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Tiny Tiny RSS">
+<meta property="article:tag" content="阿里云服务器">
+<meta property="article:tag" content="docker">
+<meta property="article:tag" content="docker-compose">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201120140558560.png">
 
@@ -127,11 +133,21 @@
         
         
         
+    <a href="/myblog/search/" id="btn-search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="32"><path d="M192 448c0-141.152 114.848-256 256-256s256 114.848 256 256-114.848 256-256 256-256-114.848-256-256z m710.624 409.376l-206.88-206.88A318.784 318.784 0 0 0 768 448c0-176.736-143.264-320-320-320S128 271.264 128 448s143.264 320 320 320a318.784 318.784 0 0 0 202.496-72.256l206.88 206.88 45.248-45.248z"></path></svg>
+    </a>
+
 
         
         
 
-        
+         
+    <a href="#" class="button" id="b2t" aria-label="Back to Top" title="Back to Top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M233.376 722.752L278.624 768 512 534.624 745.376 768l45.248-45.248L512 444.128zM192 352h640V288H192z" fill="currentColor"></path>
+        </svg>
+    </a>
+
 
         
             <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
@@ -158,11 +174,13 @@
 
 <div class="post-title">
     <h1 class="post-title__text">
-        no title
+        用阿里云部署 Tiny Tiny RSS
     </h1>
     <div class="post-title__meta">
-        <a href="/myblog/archives/2020/12/" class="post-meta__date button">2020-12-01</a>
+        <a href="/myblog/archives/2020/11/" class="post-meta__date button">2020-11-12</a>
         
+    <span class="separate-dot"></span><a href="/myblog/categories/%E5%AE%9E%E7%94%A8%E6%80%A7-%E9%98%90%E8%BF%B0%E8%A7%84%E5%88%99/" class="button">实用性-阐述规则</a>
+
  
         
     
@@ -176,14 +194,45 @@
 </div>
 
 
+    <aside class="post-side">
+        <div class="post-side__toc">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">部署云服务器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E9%98%BF%E9%87%8C%E4%BA%91%E9%83%A8%E7%BD%B2%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.1.</span> <span class="toc-text">利用阿里云部署服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8vultr%E9%83%A8%E7%BD%B2%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.2.</span> <span class="toc-text">利用vultr部署服务器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%A4%96%E9%83%A8%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%92%8C-SSH-%E9%93%BE%E6%8E%A5"><span class="toc-number">2.</span> <span class="toc-text">使用外部控制台和 SSH 链接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E6%8E%A5%E5%88%B0-Xshell"><span class="toc-number">2.1.</span> <span class="toc-text">链接到 Xshell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E5%88%B0-xft6"><span class="toc-number">2.2.</span> <span class="toc-text">连接到 xft6</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83"><span class="toc-number">3.</span> <span class="toc-text">配置环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-yum"><span class="toc-number">3.1.</span> <span class="toc-text">安装 yum</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-Docker"><span class="toc-number">3.2.</span> <span class="toc-text">安装 Docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-Docker-compose"><span class="toc-number">3.3.</span> <span class="toc-text">安装 Docker-compose</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-Tiny-Tiny-RSS-%E5%8F%8A%E5%85%B6%E5%91%A8%E8%BE%B9%E6%9C%8D%E5%8A%A1"><span class="toc-number">4.</span> <span class="toc-text">安装 Tiny Tiny RSS 及其周边服务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-Tiny-Tiny-RSS%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="toc-number">4.1.</span> <span class="toc-text">安装 Tiny Tiny RSS与配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-Nginx-%E4%BD%9C%E4%B8%BA-Docker-%E5%AE%B9%E5%99%A8%E7%9A%84%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86"><span class="toc-number">4.2.</span> <span class="toc-text">安装 Nginx 作为 Docker 容器的反向代理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%BE%E7%BD%B2SSL%E8%AF%81%E4%B9%A6%EF%BC%8C%E9%83%A8%E7%BD%B2HTTPS"><span class="toc-number">5.</span> <span class="toc-text">签署SSL证书，部署HTTPS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%E7%BB%93%E6%9E%9C"><span class="toc-number">6.</span> <span class="toc-text">部署结果</span></a></li></ol>
+        </div>
+    </aside>
+    <a class="btn-toc button" id="btn-toc" tabindex="0">
+        <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z" fill="currentColor"></path>
+        </svg>
+    </a>
+    <div class="toc-menus" id="toc-menus">
+        <div class="toc-title">Article Directory</div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">部署云服务器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E9%98%BF%E9%87%8C%E4%BA%91%E9%83%A8%E7%BD%B2%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.1.</span> <span class="toc-text">利用阿里云部署服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8vultr%E9%83%A8%E7%BD%B2%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.2.</span> <span class="toc-text">利用vultr部署服务器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%A4%96%E9%83%A8%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%92%8C-SSH-%E9%93%BE%E6%8E%A5"><span class="toc-number">2.</span> <span class="toc-text">使用外部控制台和 SSH 链接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E6%8E%A5%E5%88%B0-Xshell"><span class="toc-number">2.1.</span> <span class="toc-text">链接到 Xshell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E5%88%B0-xft6"><span class="toc-number">2.2.</span> <span class="toc-text">连接到 xft6</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83"><span class="toc-number">3.</span> <span class="toc-text">配置环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-yum"><span class="toc-number">3.1.</span> <span class="toc-text">安装 yum</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-Docker"><span class="toc-number">3.2.</span> <span class="toc-text">安装 Docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-Docker-compose"><span class="toc-number">3.3.</span> <span class="toc-text">安装 Docker-compose</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-Tiny-Tiny-RSS-%E5%8F%8A%E5%85%B6%E5%91%A8%E8%BE%B9%E6%9C%8D%E5%8A%A1"><span class="toc-number">4.</span> <span class="toc-text">安装 Tiny Tiny RSS 及其周边服务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-Tiny-Tiny-RSS%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="toc-number">4.1.</span> <span class="toc-text">安装 Tiny Tiny RSS与配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-Nginx-%E4%BD%9C%E4%B8%BA-Docker-%E5%AE%B9%E5%99%A8%E7%9A%84%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86"><span class="toc-number">4.2.</span> <span class="toc-text">安装 Nginx 作为 Docker 容器的反向代理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%BE%E7%BD%B2SSL%E8%AF%81%E4%B9%A6%EF%BC%8C%E9%83%A8%E7%BD%B2HTTPS"><span class="toc-number">5.</span> <span class="toc-text">签署SSL证书，部署HTTPS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%E7%BB%93%E6%9E%9C"><span class="toc-number">6.</span> <span class="toc-text">部署结果</span></a></li></ol>
+    </div>
+
 
 <article class="post content-card">
-    <div class="post__header"></div>
+    <div class="post__header">
+    <div class="post__expire" id="post-expired-notify">
+        <p>
+            This article was last updated on &lt;span id=&#34;expire-date&#34;&gt;&lt;/span&gt; days ago, the information described in the article may be outdated.
+        </p>
+    </div>
+    <script>
+        (() => {
+            var update = Date.parse("2020-12-01"),
+                date = new Date(),
+                now = date.getTime(),
+                expire = now - update,
+                expire_days = Math.floor(expire/(24*3600*1000));
+            if (expire_days >= 120) {
+                document.querySelectorAll('#expire-date')[0].innerHTML = expire_days;
+                document.querySelectorAll('#post-expired-notify')[0].style.display = 'block';
+            }
+        })();
+    </script>
+</div>
     <div class="post__content">
-        <hr>
-<p>title:”用阿里云部署TTRSS”<br>date:2020-11-12<br>tags:[“TTRSS”]<br>series:[“实用性-阐述规则”]</p>
-<hr>
-<p><strong>准备资料</strong> </p>
+        <p><strong>准备资料</strong> </p>
 <ol>
 <li>云服务器：<a target="_blank" rel="noopener" href="https://swas.console.aliyun.com/?spm=5176.100251.products-recent.dswas.18244f15wiQdFn#/server/8f7dab4ddf6e435ea464204c5799150b/cn-hangzhou/dashboard">阿里云服务器</a>【本次使用】；<a target="_blank" rel="noopener" href="https://my.vultr.com/">vultr服务器</a></li>
 <li>SSH：<code>xft6</code> </li>
@@ -476,15 +525,15 @@
 
     </div>
      
-    <div class="post-footer__meta"><p>updated at 2020-11-29</p></div> 
-    <div class="post-meta__cats"></div> 
+    <div class="post-footer__meta"><p>updated at 2020-12-01</p></div> 
+    <div class="post-meta__cats"><a href="/myblog/categories/%E5%AE%9E%E7%94%A8%E6%80%A7-%E9%98%90%E8%BF%B0%E8%A7%84%E5%88%99/" class="post-cats__link button">实用性-阐述规则</a><a href="/myblog/tags/Tiny-Tiny-RSS/" class="post-tags__link button"># Tiny Tiny RSS</a><a href="/myblog/tags/%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="post-tags__link button"># 阿里云服务器</a><a href="/myblog/tags/docker/" class="post-tags__link button"># docker</a><a href="/myblog/tags/docker-compose/" class="post-tags__link button"># docker-compose</a></div> 
 </article>
 
 
     <div class="nav">
         <div class="nav__prev">
             
-                <a href="/myblog/2020/12/01/%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="nav__link">
+                <a href="/myblog/2020/11/28/%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="nav__link">
                     <div>
                         <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
                     </div>
@@ -493,27 +542,13 @@
                             Previous Post
                         </div>
                         <div class="nav__title">
-                            no title
+                            用Hexo搭建静态博客
                         </div>
                     </div>
                 </a>
             
         </div>
         <div class="nav__next">
-            
-                <a href="/myblog/2020/12/01/hello-world/" class="nav__link">
-                    <div>
-                        <div class="nav__label">
-                            Next Post
-                        </div>
-                        <div class="nav__title">
-                            Hello World
-                        </div>
-                    </div>
-                    <div>
-                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
-                    </div>
-                </a>
             
         </div>
     </div>
@@ -536,7 +571,7 @@
     
         
         <p class="footer-copyright">
-            Copyright © 2020 <a href="/myblog/">Hexo</a>
+            Copyright © 2019&nbsp;-&nbsp;2020 <a href="/myblog/">Hexo</a>
         </p>
     
     
