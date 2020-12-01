@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    
+    
+    
+    
+    
+
+
+    <!-- meta -->
+
+
+<title>no title | Hexo</title>
+
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="title:”用阿里云部署TTRSS”date:2020-11-12tags:[“TTRSS”]series:[“实用性-阐述规则”]  准备资料   云服务器：阿里云服务器【本次使用】；vultr服务器 SSH：xft6  控制台：Xshell  完成备案的域名——域名注册与备案参考文章：域名注册与备案流程   部署云服务器利用阿里云部署服务器 购买云服务器——以购买轻量应用服务器为例，进入阿">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://znizn.github.io/myblog/2020/12/01/TT-RSS%EF%BC%9A%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="title:”用阿里云部署TTRSS”date:2020-11-12tags:[“TTRSS”]series:[“实用性-阐述规则”]  准备资料   云服务器：阿里云服务器【本次使用】；vultr服务器 SSH：xft6  控制台：Xshell  完成备案的域名——域名注册与备案参考文章：域名注册与备案流程   部署云服务器利用阿里云部署服务器 购买云服务器——以购买轻量应用服务器为例，进入阿">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201120140558560.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201120140726238.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201120140810556.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201120140914917.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201120140933945.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201120141204052.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026203615317.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026203651655.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026203752804.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026203846827.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026203906811.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026203951177.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026204041259.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026204243254.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026204448895.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026204558268.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026204720713.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026204815578.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026204901296.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026204951395.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026205137903.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201029111626728.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026205443118.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026205754075.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026211822324.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026212358558.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026213306921.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026213745532.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026214923169.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201120143633163.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201120143952279.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201120144047551.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201120145557348.png">
+<meta property="article:published_time" content="2020-12-01T13:52:55.406Z">
+<meta property="article:modified_time" content="2020-11-29T07:15:58.828Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201120140558560.png">
+
+
+    
+<link rel="stylesheet" href="/myblog/css/style/main.css">
+ 
+
+
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/myblog/css/highlight/default.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')===-1)this.media='all'">
+        
+    
+
+    
+    
+
+     
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/myblog/" class="button">
+            <span class="logo__text">ONION</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/myblog/" class="navbar-menu button">首页</a>
+                
+                    <a href="/myblog/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/myblog/archives/" class="navbar-menu button">归档</a>
+                
+                    <a href="/myblog/friends/" class="navbar-menu button">友链</a>
+                
+                    <a href="/myblog/page/" class="navbar-menu button">Page</a>
+                
+            </div>
+        
+        
+        
+
+        
+        
+
+        
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/myblog/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/myblog/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/myblog/archives/" class="dropdown-menu button">归档</a>
+                
+                    <a href="/myblog/friends/" class="dropdown-menu button">友链</a>
+                
+                    <a href="/myblog/page/" class="dropdown-menu button">Page</a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        no title
+    </h1>
+    <div class="post-title__meta">
+        <a href="/myblog/archives/2020/12/" class="post-meta__date button">2020-12-01</a>
+        
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+
+<article class="post content-card">
+    <div class="post__header"></div>
+    <div class="post__content">
+        <hr>
+<p>title:”用阿里云部署TTRSS”<br>date:2020-11-12<br>tags:[“TTRSS”]<br>series:[“实用性-阐述规则”]</p>
+<hr>
+<p><strong>准备资料</strong> </p>
+<ol>
+<li>云服务器：<a target="_blank" rel="noopener" href="https://swas.console.aliyun.com/?spm=5176.100251.products-recent.dswas.18244f15wiQdFn#/server/8f7dab4ddf6e435ea464204c5799150b/cn-hangzhou/dashboard">阿里云服务器</a>【本次使用】；<a target="_blank" rel="noopener" href="https://my.vultr.com/">vultr服务器</a></li>
+<li>SSH：<code>xft6</code> </li>
+<li>控制台：<code>Xshell</code> </li>
+<li>完成备案的域名——域名注册与备案参考文章：<a href="F:\坚果云\markdown\02-工作清单\2.2 技术总结\2.2.3 计算机\域名注册与备案流程.md#域名注册与备案流程">域名注册与备案流程</a> </li>
+</ol>
+<h2 id="部署云服务器"><a href="#部署云服务器" class="headerlink" title="部署云服务器"></a>部署云服务器</h2><h3 id="利用阿里云部署服务器"><a href="#利用阿里云部署服务器" class="headerlink" title="利用阿里云部署服务器"></a>利用阿里云部署服务器</h3><ol>
+<li><p>购买云服务器——以购买轻量应用服务器为例，进入<a target="_blank" rel="noopener" href="https://www.aliyun.com/product/swas?spm=5176.10173289.101.1.1ac02e772tjMjm">阿里云轻量应用服务器购买页面</a> </p>
+</li>
+<li><p>选择服务器类型</p>
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201120140558560.png" alt="image-20201120140558560"></p>
+</li>
+<li><p>配置云服务器部署位置、性能、时间等</p>
+<ol>
+<li><p>选择部署位置</p>
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201120140726238.png" alt="image-20201120140726238"></p>
+</li>
+<li><p>选择服务器系统镜像——以 <code>CentOS7.3</code> 为例</p>
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201120140810556.png" alt="image-20201120140810556"></p>
+</li>
+<li><p>选择服务器性能套餐和系统盘容量</p>
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201120140914917.png" alt="image-20201120140914917"></p>
+</li>
+<li><p>选择购买时长和数量</p>
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201120140933945.png" alt="image-20201120140933945"></p>
+</li>
+</ol>
+</li>
+<li><p>点击购买后自动开始部署</p>
+</li>
+<li><p>部署完成——部署完成的服务器可在服务器列表中找到</p>
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201120141204052.png" alt="image-20201120141204052"></p>
+</li>
+</ol>
+<h3 id="利用vultr部署服务器"><a href="#利用vultr部署服务器" class="headerlink" title="利用vultr部署服务器"></a>利用vultr部署服务器</h3><ol>
+<li><p>进入<a target="_blank" rel="noopener" href="https://my.vultr.com/deploy/">部署云服务器入口</a> </p>
+</li>
+<li><p>选择服务器种类</p>
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026203615317.png" alt="image-20201026203615317"></p>
+</li>
+<li><p>选择服务器位置、性能等</p>
+<ol>
+<li><p>选择服务器部署位置</p>
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026203651655.png" alt="image-20201026203651655"></p>
+</li>
+<li><p>选择服务器操作系统——本次使用的是 <code>CentOS7</code> 系统</p>
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026203752804.png" alt="image-20201026203752804"></p>
+<blockquote>
+<p>双击系统名称可以选择系统版本</p>
+</blockquote>
+</li>
+<li><p>选择服务器方案</p>
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026203846827.png" alt="image-20201026203846827"></p>
+</li>
+<li><p>额外功能</p>
+<img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026203906811.png" alt="image-20201026203906811" style="zoom:50%;" />
+</li>
+</ol>
+</li>
+<li><p>点击部署并等待部署完成</p>
+<img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026203951177.png" alt="image-20201026203951177" style="zoom:50%;" />
+
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026204041259.png" alt="image-20201026204041259"></p>
+</li>
+<li><p>部署成功结果</p>
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026204243254.png" alt="image-20201026204243254"></p>
+</li>
+</ol>
+<h2 id="使用外部控制台和-SSH-链接"><a href="#使用外部控制台和-SSH-链接" class="headerlink" title="使用外部控制台和 SSH 链接"></a>使用外部控制台和 SSH 链接</h2><h3 id="链接到-Xshell"><a href="#链接到-Xshell" class="headerlink" title="链接到 Xshell"></a>链接到 <code>Xshell</code></h3><ol>
+<li><p>新建连接</p>
+<img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026204448895.png" alt="image-20201026204448895" style="zoom: 67%;" />
+</li>
+<li><p>设置名称和主机IP</p>
+<img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026204558268.png" alt="image-20201026204558268" style="zoom: 50%;" />
+</li>
+<li><p>在用户身份验证中设置用户名和密码</p>
+<img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026204720713.png" alt="image-20201026204720713" style="zoom: 50%;" />
+</li>
+<li><p>连接到云服务器</p>
+<img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026204815578.png" alt="image-20201026204815578" style="zoom: 50%;" />
+</li>
+<li><p>接受主机密钥</p>
+<img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026204901296.png" alt="image-20201026204901296" style="zoom:50%;" />
+</li>
+<li><p>连接成功结果</p>
+<img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026204951395.png" alt="image-20201026204951395" style="zoom: 80%;" />
+
+</li>
+</ol>
+<h3 id="连接到-xft6"><a href="#连接到-xft6" class="headerlink" title="连接到 xft6"></a>连接到 <code>xft6</code></h3><ol>
+<li><p>新建连接</p>
+<img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026205137903.png" alt="image-20201026205137903" style="zoom: 67%;" />
+</li>
+<li><p>设置名称、主机IP、用户名与密码后确认</p>
+<img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201029111626728.png" alt="image-20201029111626728" style="zoom:67%;" />
+</li>
+<li><p>连接到云服务器</p>
+<img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026205443118.png" alt="image-20201026205443118" style="zoom: 50%;" />
+</li>
+<li><p>连接成功结构</p>
+<img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026205754075.png" alt="image-20201026205754075" style="zoom:50%;" />
+
+</li>
+</ol>
+<h2 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h2><h3 id="安装-yum"><a href="#安装-yum" class="headerlink" title="安装 yum"></a>安装 <code>yum</code></h3><p>安装和更新代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install epel-release -y</span><br><span class="line">sudo yum update -y</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装-Docker"><a href="#安装-Docker" class="headerlink" title="安装 Docker"></a>安装 <code>Docker</code></h3><ol>
+<li>一键安装 <code>Docker</code></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://get.docker.com/ | sh</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>实测该命令在<code>CentOS 8</code>上无法使用，需要手动安装</p>
+</blockquote>
+<ol start="2">
+<li>启动 <code>Docker</code> 服务</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start docker</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>检查一下 <code>Docker</code> 是否启动成功</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl status dockersudo systemctl status docker</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026211822324.png" alt="image-20201026211822324"></p>
+<center>Docker服务状态</center>
+
+<blockquote>
+<p>参考资料：<a target="_blank" rel="noopener" href="https://docs.docker.com/install/linux/docker-ce/centos/">Get Docker Engine - Community for CentOS | Docker Documentation</a></p>
+</blockquote>
+<h3 id="安装-Docker-compose"><a href="#安装-Docker-compose" class="headerlink" title="安装 Docker-compose"></a>安装 <code>Docker-compose</code></h3><p>由于 Tiny Tiny RSS 依赖有 PostgreSQL 的数据库服务以及 <a target="_blank" rel="noopener" href="https://github.com/HenryQW/mercury_fulltext">mercury_fulltext</a> 的全文抓取服务等等，这些服务我们都借助于 Docker 部署，因此利用 <code>Docker-compose</code> 就会大大降低我们的部署难度。</p>
+<ol>
+<li>安装 <code>Docker-compose</code></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://github.com/docker/compose/releases/download/1.25.0/docker-compose-`uname -s`-`uname -m` -o /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>给予 <code>Docker-compose</code> 可执行权限</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>检查 <code>Docker-compose</code> 是否安装成功</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose --version</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026212358558.png" alt="image-20201026212358558"></p>
+<center>安装成功结果</center>
+
+<h2 id="安装-Tiny-Tiny-RSS-及其周边服务"><a href="#安装-Tiny-Tiny-RSS-及其周边服务" class="headerlink" title="安装 Tiny Tiny RSS 及其周边服务"></a>安装 Tiny Tiny RSS 及其周边服务</h2><h3 id="安装-Tiny-Tiny-RSS与配置"><a href="#安装-Tiny-Tiny-RSS与配置" class="headerlink" title="安装 Tiny Tiny RSS与配置"></a>安装 Tiny Tiny RSS与配置</h3><ol>
+<li>下载由 Awesome-TTRSS 配置的 Tiny Tiny RSS 服务的 <code>docker-compose</code> 配置文件</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建 ttrss 目录并进入</span></span><br><span class="line">mkdir ttrss &amp;&amp; <span class="built_in">cd</span> ttrss</span><br><span class="line"></span><br><span class="line"><span class="comment"># 利用 curl 下载 ttrss 的 docker-compose 配置文件至服务器</span></span><br><span class="line">curl -fLo docker-compose.yml https://github.com/HenryQW/Awesome-TTRSS/raw/master/docker-compose.yml</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>修改 <code>docker-compose.yml </code> 里面的内容</p>
+<ol>
+<li><p>进入文本编辑模式</p>
+<ol>
+<li><p>使用 <code>vi</code> 进入文本编辑模式</p>
+<p><code>vi docker-compose.yml</code></p>
+</li>
+<li><p>点击 <kbd>i</kbd> 进入文字输入模式</p>
+</li>
+</ol>
+</li>
+<li><p>修改文档</p>
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026213306921.png" alt="image-20201026213306921"></p>
+<blockquote>
+<p>TT-RSS的默认端口是181</p>
+</blockquote>
+</li>
+<li><p>保存退出</p>
+<ol>
+<li>点击 <kbd>Esc</kbd> 进入命令模式</li>
+<li>使用 <code>:wq</code> 保存文件并退出</li>
+</ol>
+</li>
+</ol>
+<blockquote>
+<ol>
+<li>将 PostgreSQL 数据库的默认密码进行修改</li>
+<li>将 Tiny Tiny RSS 服务的部署网址修改——注意，如果你的部署 URL 包含端口（比如默认部署端口为 181 端口），那么这里的 URL 也需要加上端口号，格式为 <code>&#123;网址&#125;:&#123;端口&#125;</code> </li>
+</ol>
+</blockquote>
+</li>
+<li><p>启动 Tiny Tiny RSS 服务</p>
+<p><code>docker-compose up -d</code></p>
+</li>
+<li><p>查看脚本执行结果</p>
+<p><code>docker ps</code></p>
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026213745532.png" alt="image-20201026213745532"></p>
+<blockquote>
+<ul>
+<li>Tiny Tiny RSS 本身，监听端口为 <code>0.0.0.0:181 -&gt; 80</code>，同时暴露给外网</li>
+<li>PostgreSQL 数据库，仅供内部使用</li>
+<li>Mercury 全文抓取服务，仅供内部使用</li>
+<li>OpenCC 简体、繁体中文转换服务，仅供内部使用</li>
+</ul>
+</blockquote>
+</li>
+<li><p>发现问题则执行以下代码修改</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 关闭 Docker 容器们</span></span><br><span class="line">docker-compose down</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除已停止的 Docker 容器</span></span><br><span class="line">docker-compose rm</span><br><span class="line"></span><br><span class="line"><span class="comment"># ……</span></span><br><span class="line"><span class="comment"># 修改 docker-compose 配置文件</span></span><br><span class="line"><span class="comment"># ……</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 再次开启 Docker 服务</span></span><br><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装-Nginx-作为-Docker-容器的反向代理"><a href="#安装-Nginx-作为-Docker-容器的反向代理" class="headerlink" title="安装 Nginx 作为 Docker 容器的反向代理"></a>安装 Nginx 作为 Docker 容器的反向代理</h3><ol>
+<li><p>使用 <code>yum</code> 安装 Nginx</p>
+<p><code>sudo yum install nginx</code></p>
+</li>
+<li><p>开启 Nginx 服务</p>
+<p><code>sudo systemctl start nginx</code></p>
+</li>
+<li><p>检查 Nginx 是否启动成功</p>
+<p><code>sudo systemctl status nginx</code></p>
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026214923169.png" alt="image-20201026214923169"></p>
+<blockquote>
+<p>如果事先安装了 <code>Apache</code> ，先用 <code>sudo systemctl stop httpd.service</code> 关闭 <code>Apache</code> 服务</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="签署SSL证书，部署HTTPS"><a href="#签署SSL证书，部署HTTPS" class="headerlink" title="签署SSL证书，部署HTTPS"></a>签署SSL证书，部署HTTPS</h2><ol>
+<li>安装 <code>certbot</code> </li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install certbot python2-certbot-nginx</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>运行 <code>certbot</code> 来签署 SSL 证书并自动配置 Nginx 服务</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo certbot --nginx</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>在这里，certbot 会要求我们输入我们希望签署 SSL 证书的域名，我们选择为 Tiny Tiny RSS 分配的域名即可</li>
+<li>等待脚本执行完成后重启 Nginx 服务</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart nginx</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li><p>修改 Nginx 的配置文件，配置 Nginx 反向代理，将访问 <code>https://www.zhuottrss.top</code> 的请求指向我们刚刚部署好的 Tiny Tiny RSS 服务</p>
+<blockquote>
+<p>Nginx 的配置文件位于 <code>/etc/nginx/nginx.conf</code> </p>
+</blockquote>
+</li>
+<li><p>在 <code>http</code> 项下，<code>server</code> 项前定义 <code>upstream</code> 服务</p>
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201120143633163.png" alt="image-20201120143633163"></p>
+</li>
+<li><p>在刚刚 <code>certbot</code> 为我们生成好的响应域名 <code>server</code> 项下，注释掉第一行定义 <code>root</code> 的内容</p>
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201120143952279.png" alt="image-20201120143952279"></p>
+</li>
+<li><p>并将 <code>location /</code> 项修改为以下内容</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">		proxy_redirect off;</span><br><span class="line">		proxy_pass http:<span class="comment">//ttrssdev;</span></span><br><span class="line"></span><br><span class="line">		proxy_set_header  Host                $http_host;</span><br><span class="line">		proxy_set_header  X-Real-IP           $remote_addr;</span><br><span class="line">		proxy_set_header  X-Forwarded-Ssl     on;</span><br><span class="line">		proxy_set_header  X-Forwarded-For     $proxy_add_x_forwarded_for;</span><br><span class="line">		proxy_set_header  X-Forwarded-Proto   $scheme;</span><br><span class="line">		proxy_set_header  X-Frame-Options     SAMEORIGIN;</span><br><span class="line"></span><br><span class="line">		client_max_body_size        100m;</span><br><span class="line">		client_body_buffer_size     128k;</span><br><span class="line"></span><br><span class="line">		proxy_buffer_size           4k;</span><br><span class="line">		proxy_buffers               <span class="number">4</span> 32k;</span><br><span class="line">		proxy_busy_buffers_size     64k;</span><br><span class="line">		proxy_temp_file_write_size  64k;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201120144047551.png" alt="image-20201120144047551"></p>
+<ol start="9">
+<li>再次执行 <code>sudo systemctl restart nginx</code> 重启 Nginx 服务，之后可以在网站上访问TTRSS服务器了</li>
+</ol>
+<h2 id="部署结果"><a href="#部署结果" class="headerlink" title="部署结果"></a>部署结果</h2><ol>
+<li><p>登录Tiny Tiny RSS 的默认管理员账户密码</p>
+<blockquote>
+<p>Tiny Tiny RSS 的默认管理员账户密码</p>
+<p>账号：admin</p>
+<p>密码：password</p>
+</blockquote>
+</li>
+<li><p>部署结果</p>
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201120145557348.png" alt="image-20201120145557348"></p>
+</li>
+</ol>
+<hr>
+<blockquote>
+<p>参考资料</p>
+<ul>
+<li>核心文档<ol>
+<li><a target="_blank" rel="noopener" href="https://blog.spencerwoo.com/2019/11/tiny-tiny-rss/">Tiny Tiny RSS | 最速部署私有 RSS 服务器</a></li>
+<li><a target="_blank" rel="noopener" href="https://sspai.com/post/41302">如何搭建属于自己的 RSS 服务，高效精准获取信息</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.vultr.com/docs/how-to-install-tiny-tiny-rss-on-centos-7#Step_1__Update_CentOS_7_to_the_latest_stable_status_using_YUM">How to Install Tiny Tiny RSS on CentOS 7</a></li>
+<li>一站式容器化解决方案：<a target="_blank" rel="noopener" href="https://ttrss.henry.wang/zh/#%E5%85%B3%E4%BA%8E">Awesome TTRSS</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.spencerwoo.com/2020/03/ttrss-noteworthy/">部署中的普遍问题与注意事项</a></li>
+</ol>
+</li>
+<li>解决单个问题文档<ol>
+<li>Cerbot：<a target="_blank" rel="noopener" href="https://certbot.eff.org/lets-encrypt/centosrhel7-nginx">Certbot | Nginx on CentOS/RHEL 7</a></li>
+</ol>
+</li>
+</ul>
+</blockquote>
+
+    </div>
+     
+    <div class="post-footer__meta"><p>updated at 2020-11-29</p></div> 
+    <div class="post-meta__cats"></div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+                <a href="/myblog/2020/12/01/%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                    </div>
+                    <div>
+                        <div class="nav__label">
+                            Previous Post
+                        </div>
+                        <div class="nav__title">
+                            no title
+                        </div>
+                    </div>
+                </a>
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/myblog/2020/12/01/hello-world/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            Hello World
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+
+
+</main>
+
+            <footer class="footer">
+    
+
+
+    
+     
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2020 <a href="/myblog/">Hexo</a>
+        </p>
+    
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
+  
+
+
+
+ 
+
+
+    
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+    </body>
+</html>
