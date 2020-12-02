@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    
+    
+    
+    
+    
+
+
+    <!-- meta -->
+
+
+<title>用 WordPress 搭建动态博客 | Hexo</title>
+
+
+    <meta name="keywords" content="WordPress, 腾讯云">
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="云服务器自动搭建以腾讯云服务器为例：  点击【重置应用】   点击【应用镜像】，选择【WordPress】，勾选上确定声明后点击【确定】   点击【应用管理】   点击【登录】   打开 credentials.txt ，并记住其中的密码   1cat ~lighthouse&#x2F;credentials.txt    登录管理员登录地址，然后输入刚才的账户名和密码   现在可以登录 WordPress">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用 WordPress 搭建动态博客">
+<meta property="og:url" content="https://znizn.github.io/myblog/2020/11/28/%E6%90%AD%E5%BB%BAWordPress%E5%8A%A8%E6%80%81%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="云服务器自动搭建以腾讯云服务器为例：  点击【重置应用】   点击【应用镜像】，选择【WordPress】，勾选上确定声明后点击【确定】   点击【应用管理】   点击【登录】   打开 credentials.txt ，并记住其中的密码   1cat ~lighthouse&#x2F;credentials.txt    登录管理员登录地址，然后输入刚才的账户名和密码   现在可以登录 WordPress">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201129163957156.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201129164049051.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201129182926625.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201129182942189.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201129183216979.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201129183303001.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201129173538851.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201129173727307.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026211822324.png">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201129114704520.png">
+<meta property="article:published_time" content="2020-11-27T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-12-02T05:01:57.497Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="WordPress">
+<meta property="article:tag" content="腾讯云">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201129163957156.png">
+
+
+    
+<link rel="stylesheet" href="/myblog/css/style/main.css">
+ 
+
+
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/myblog/css/highlight/default.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')===-1)this.media='all'">
+        
+    
+
+    
+    
+
+     
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/myblog/" class="button">
+            <span class="logo__text">ONION</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/myblog/" class="navbar-menu button">首页</a>
+                
+                    <a href="/myblog/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/myblog/archives/" class="navbar-menu button">归档</a>
+                
+                    <a href="/myblog/friends/" class="navbar-menu button">友链</a>
+                
+                    <a href="/myblog/page/" class="navbar-menu button">Page</a>
+                
+            </div>
+        
+        
+        
+    <a href="/myblog/search/" id="btn-search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="32"><path d="M192 448c0-141.152 114.848-256 256-256s256 114.848 256 256-114.848 256-256 256-256-114.848-256-256z m710.624 409.376l-206.88-206.88A318.784 318.784 0 0 0 768 448c0-176.736-143.264-320-320-320S128 271.264 128 448s143.264 320 320 320a318.784 318.784 0 0 0 202.496-72.256l206.88 206.88 45.248-45.248z"></path></svg>
+    </a>
+
+
+        
+        
+
+         
+    <a href="#" class="button" id="b2t" aria-label="Back to Top" title="Back to Top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M233.376 722.752L278.624 768 512 534.624 745.376 768l45.248-45.248L512 444.128zM192 352h640V288H192z" fill="currentColor"></path>
+        </svg>
+    </a>
+
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/myblog/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/myblog/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/myblog/archives/" class="dropdown-menu button">归档</a>
+                
+                    <a href="/myblog/friends/" class="dropdown-menu button">友链</a>
+                
+                    <a href="/myblog/page/" class="dropdown-menu button">Page</a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        用 WordPress 搭建动态博客
+    </h1>
+    <div class="post-title__meta">
+        <a href="/myblog/archives/2020/11/" class="post-meta__date button">2020-11-28</a>
+        
+    <span class="separate-dot"></span><a href="/myblog/categories/%E5%AE%9E%E7%94%A8%E6%80%A7-%E9%98%90%E8%BF%B0%E8%A7%84%E5%88%99/" class="button">实用性-阐述规则</a>
+
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+    <aside class="post-side">
+        <div class="post-side__toc">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%87%AA%E5%8A%A8%E6%90%AD%E5%BB%BA"><span class="toc-text">云服务器自动搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E6%90%AD%E5%BB%BA"><span class="toc-text">手动搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%90%AD%E5%BB%BALNMP%E7%8E%AF%E5%A2%83"><span class="toc-text">搭建LNMP环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">配置数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AEWordPress"><span class="toc-text">安装和配置WordPress</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD-WordPress"><span class="toc-text">下载 WordPress</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9-WordPress-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">修改 WordPress 配置文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81WordPress%E5%AE%89%E8%A3%85"><span class="toc-text">验证WordPress安装</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8-docker-%E6%90%AD%E5%BB%BA"><span class="toc-text">用 docker 搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA-LNMP-%E7%8E%AF%E5%A2%83"><span class="toc-text">搭建 LNMP 环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-docker-%E5%92%8C-docker-compose"><span class="toc-text">安装 docker 和 docker-compose</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-Docker"><span class="toc-text">安装 Docker</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-docker-compose"><span class="toc-text">安装 docker-compose</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-yml-%E6%96%87%E4%BB%B6"><span class="toc-text">配置 .yml 文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85WordPress"><span class="toc-text">安装WordPress</span></a></li></ol></li></ol></li></ol>
+        </div>
+    </aside>
+    <a class="btn-toc button" id="btn-toc" tabindex="0">
+        <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z" fill="currentColor"></path>
+        </svg>
+    </a>
+    <div class="toc-menus" id="toc-menus">
+        <div class="toc-title">Article Directory</div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%87%AA%E5%8A%A8%E6%90%AD%E5%BB%BA"><span class="toc-text">云服务器自动搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E6%90%AD%E5%BB%BA"><span class="toc-text">手动搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%90%AD%E5%BB%BALNMP%E7%8E%AF%E5%A2%83"><span class="toc-text">搭建LNMP环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">配置数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AEWordPress"><span class="toc-text">安装和配置WordPress</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD-WordPress"><span class="toc-text">下载 WordPress</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9-WordPress-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">修改 WordPress 配置文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81WordPress%E5%AE%89%E8%A3%85"><span class="toc-text">验证WordPress安装</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8-docker-%E6%90%AD%E5%BB%BA"><span class="toc-text">用 docker 搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA-LNMP-%E7%8E%AF%E5%A2%83"><span class="toc-text">搭建 LNMP 环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-docker-%E5%92%8C-docker-compose"><span class="toc-text">安装 docker 和 docker-compose</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-Docker"><span class="toc-text">安装 Docker</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-docker-compose"><span class="toc-text">安装 docker-compose</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-yml-%E6%96%87%E4%BB%B6"><span class="toc-text">配置 .yml 文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85WordPress"><span class="toc-text">安装WordPress</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+
+<article class="post content-card">
+    <div class="post__header">
+    <div class="post__expire" id="post-expired-notify">
+        <p>
+            This article was last updated on &lt;span id=&#34;expire-date&#34;&gt;&lt;/span&gt; days ago, the information described in the article may be outdated.
+        </p>
+    </div>
+    <script>
+        (() => {
+            var update = Date.parse("2020-12-02"),
+                date = new Date(),
+                now = date.getTime(),
+                expire = now - update,
+                expire_days = Math.floor(expire/(24*3600*1000));
+            if (expire_days >= 120) {
+                document.querySelectorAll('#expire-date')[0].innerHTML = expire_days;
+                document.querySelectorAll('#post-expired-notify')[0].style.display = 'block';
+            }
+        })();
+    </script>
+</div>
+    <div class="post__content">
+        <h2 id="云服务器自动搭建"><a href="#云服务器自动搭建" class="headerlink" title="云服务器自动搭建"></a>云服务器自动搭建</h2><p>以腾讯云服务器为例：</p>
+<ol>
+<li><p>点击【重置应用】</p>
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201129163957156.png" alt="image-20201129163957156"></p>
+</li>
+<li><p>点击【应用镜像】，选择【WordPress】，勾选上确定声明后点击【确定】</p>
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201129164049051.png" alt="image-20201129164049051"></p>
+</li>
+<li><p>点击【应用管理】</p>
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201129182926625.png" alt="image-20201129182926625"></p>
+</li>
+<li><p>点击【登录】</p>
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201129182942189.png" alt="image-20201129182942189"></p>
+</li>
+<li><p>打开 <code>credentials.txt</code> ，并记住其中的密码</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~lighthouse/credentials.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201129183216979.png" alt="image-20201129183216979"></p>
+<ol start="6">
+<li><p>登录管理员登录地址，然后输入刚才的账户名和密码</p>
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201129183303001.png" alt="image-20201129183303001"></p>
+</li>
+<li><p>现在可以登录 WordPress 配置和撰写博客了</p>
+</li>
+</ol>
+<h2 id="手动搭建"><a href="#手动搭建" class="headerlink" title="手动搭建"></a>手动搭建</h2><h4 id="搭建LNMP环境"><a href="#搭建LNMP环境" class="headerlink" title="搭建LNMP环境"></a>搭建LNMP环境</h4><p>搭建过程参考 <a href="">搭建LNMP</a> </p>
+<h4 id="配置数据库"><a href="#配置数据库" class="headerlink" title="配置数据库"></a>配置数据库</h4><ol>
+<li>执行以下命令，进入 MariaDB。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>执行以下命令，创建 MariaDB 数据库。例如 “wordpress”。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE wordpress;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>执行以下命令，创建一个新用户。例如 “user”，登录密码为 <code>123456</code>。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE USER <span class="string">&#x27;user&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED BY <span class="string">&#x27;123456&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>执行以下命令，赋予用户对 “wordpress” 数据库的全部权限。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRANT ALL PRIVILEGES ON wordpress.* TO <span class="string">&#x27;user&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED BY <span class="string">&#x27;123456&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li><p>执行以下命令，设置 root 帐户密码。</p>
+<blockquote>
+<p>说明：MariaDB 10.4 在 CentOS 系统上已增加了 root 帐户免密登录功能，请执行以下步骤设置您的 root 帐户密码并牢记。</p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER root@localhost IDENTIFIED VIA mysql_native_password USING PASSWORD(<span class="string">&#x27;输入您的密码&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>执行以下命令，使所有配置生效。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>执行以下命令，退出 MariaDB。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\q</span><br></pre></td></tr></table></figure>
+
+<h4 id="安装和配置WordPress"><a href="#安装和配置WordPress" class="headerlink" title="安装和配置WordPress"></a>安装和配置WordPress</h4><h6 id="下载-WordPress"><a href="#下载-WordPress" class="headerlink" title="下载 WordPress"></a>下载 WordPress</h6><blockquote>
+<p>说明：WordPress 可从 WordPress 官方网站下载 WordPress 最新中文版本并安装，本教程采用 WordPress 中文版本。</p>
+</blockquote>
+<ol>
+<li>执行以下命令，删除网站根目录下用于测试 PHP-Nginx 配置的 <code>index.php</code> 文件。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /usr/share/nginx/html/index.php</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>依次执行以下命令，进入 <code>/usr/share/nginx/html/</code> 目录，并下载与解压 WordPress。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/share/nginx/html</span><br><span class="line"></span><br><span class="line">wget https://cn.wordpress.org/wordpress-5.0.4-zh_CN.tar.gz</span><br><span class="line"></span><br><span class="line">tar zxvf wordpress-5.0.4-zh_CN.tar.gz</span><br></pre></td></tr></table></figure>
+
+<h6 id="修改-WordPress-配置文件"><a href="#修改-WordPress-配置文件" class="headerlink" title="修改 WordPress 配置文件"></a>修改 WordPress 配置文件</h6><ol>
+<li>依次执行以下命令，进入 WordPress 安装目录，将 <code>wp-config-sample.php</code> 文件复制到 <code>wp-config.php</code> 文件中，并将原先的示例配置文件保留作为备份。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/share/nginx/html/wordpress</span><br><span class="line"></span><br><span class="line">cp wp-config-sample.php wp-config.php</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>执行以下命令，打开并编辑新创建的配置文件。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim wp-config.php</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>按 <kbd>i</kbd> 切换至编辑模式，找到文件中 MySQL 的部分，并将相关配置信息修改为 <a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/213/8044#database">配置 WordPress 数据库</a> 中的内容。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// ** MySQL settings - You can get this info from your web host ** //</span><br><span class="line">/** The name of the database <span class="keyword">for</span> WordPress */</span><br><span class="line">define(<span class="string">&#x27;DB_NAME&#x27;</span>, <span class="string">&#x27;wordpress&#x27;</span>);</span><br><span class="line">   </span><br><span class="line">/** MySQL database username */</span><br><span class="line">define(<span class="string">&#x27;DB_USER&#x27;</span>, <span class="string">&#x27;user&#x27;</span>);</span><br><span class="line">   </span><br><span class="line">/** MySQL database password */</span><br><span class="line">define(<span class="string">&#x27;DB_PASSWORD&#x27;</span>, <span class="string">&#x27;123456&#x27;</span>);</span><br><span class="line">   </span><br><span class="line">/** MySQL hostname */</span><br><span class="line">define(<span class="string">&#x27;DB_HOST&#x27;</span>, <span class="string">&#x27;localhost&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>修改完成后，按 <kbd>Esc</kbd>，输入 <code>:wq</code>，保存文件返回。</li>
+</ol>
+<h4 id="验证WordPress安装"><a href="#验证WordPress安装" class="headerlink" title="验证WordPress安装"></a>验证WordPress安装</h4><ol>
+<li>在浏览器地址栏输入 <code>http://域名或云服务器实例的公网 IP/wordpress 文件夹</code>，例如：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.xxx.xxx.xx/wordpress</span><br></pre></td></tr></table></figure>
+
+<p>   转至 WordPress 安装页，开始配置 WordPress。</p>
+<p>   <img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201129173538851.png" alt="image-20201129173538851"></p>
+<ol start="2">
+<li><p>根据 WordPress 安装向导提示输入以下安装信息，单击【安装 WordPress】，完成安装。</p>
+<table>
+<thead>
+<tr>
+<th align="left">所需信息</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">站点标题</td>
+<td align="left">WordPress 网站名称。</td>
+</tr>
+<tr>
+<td align="left">用户名</td>
+<td align="left">WordPress 管理员名称。出于安全考虑，建议设置一个不同于 admin 的名称。因为与默认用户名称 admin 相比，该名称更难破解。</td>
+</tr>
+<tr>
+<td align="left">密码</td>
+<td align="left">可以使用默认强密码或者自定义密码。请勿重复使用现有密码，并确保将密码保存在安全的位置。</td>
+</tr>
+<tr>
+<td align="left">您的电子邮件</td>
+<td align="left">用于接收通知的电子邮件地址。</td>
+</tr>
+</tbody></table>
+<p>现在可以用登录 WordPress 博客，并开始发布博客文章了。</p>
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201129173727307.png" alt="image-20201129173727307"></p>
+</li>
+</ol>
+<h2 id="用-docker-搭建"><a href="#用-docker-搭建" class="headerlink" title="用 docker 搭建"></a>用 docker 搭建</h2><h4 id="搭建-LNMP-环境"><a href="#搭建-LNMP-环境" class="headerlink" title="搭建 LNMP 环境"></a>搭建 LNMP 环境</h4><p>搭建方式同上</p>
+<h4 id="安装-docker-和-docker-compose"><a href="#安装-docker-和-docker-compose" class="headerlink" title="安装 docker 和 docker-compose"></a>安装 <code>docker</code> 和 <code>docker-compose</code></h4><h6 id="安装-Docker"><a href="#安装-Docker" class="headerlink" title="安装 Docker"></a>安装 <code>Docker</code></h6><ol>
+<li>一键安装 <code>Docker</code> </li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://get.docker.com/ | sh</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>实测该命令在<code>CentOS 8</code>上无法使用，需要手动安装</p>
+</blockquote>
+<ol start="2">
+<li>启动 <code>Docker</code> 服务</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start docker</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>检查一下 <code>Docker</code> 是否启动成功</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl status dockersudo systemctl status docker</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201026211822324.png" alt="image-20201026211822324"></p>
+<h6 id="安装-docker-compose"><a href="#安装-docker-compose" class="headerlink" title="安装 docker-compose"></a>安装 <code>docker-compose</code></h6><p><strong>使用 GitHub 的方式安装</strong></p>
+<p>从github上下载docker-compose二进制文件安装 下载最新版的docker-compose文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-compose-`uname -s`-`uname -m` -o /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure>
+
+<p>添加可执行权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure>
+
+<p>测试安装结果</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker-compose --version</span><br><span class="line">docker-compose version 1.16.1, build 1719ceb</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用 <code>pip</code> 安装</strong></p>
+<p>安装 <code>pip</code> </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum -y install epel-release</span><br><span class="line">yum -y install python-pip</span><br></pre></td></tr></table></figure>
+
+<p>安装 <code>docker-compose</code> </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install docker-compose</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置-yml-文件"><a href="#配置-yml-文件" class="headerlink" title="配置 .yml 文件"></a>配置 <code>.yml</code> 文件</h4><p>文件配置代码如下所示：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3.3&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">   <span class="attr">db:</span></span><br><span class="line">     <span class="attr">image:</span> <span class="string">mysql:5.7</span></span><br><span class="line">     <span class="attr">volumes:</span></span><br><span class="line">       <span class="bullet">-</span> <span class="string">db_data:/var/lib/mysql</span></span><br><span class="line">     <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">     <span class="attr">environment:</span></span><br><span class="line">       <span class="attr">MYSQL_ROOT_PASSWORD:</span> <span class="string">somewordpress</span></span><br><span class="line">       <span class="attr">MYSQL_DATABASE:</span> <span class="string">wordpress</span></span><br><span class="line">       <span class="attr">MYSQL_USER:</span> <span class="string">wordpress</span></span><br><span class="line">       <span class="attr">MYSQL_PASSWORD:</span> <span class="string">wordpress</span></span><br><span class="line"></span><br><span class="line">   <span class="attr">wordpress:</span></span><br><span class="line">     <span class="attr">depends_on:</span></span><br><span class="line">       <span class="bullet">-</span> <span class="string">db</span></span><br><span class="line">     <span class="attr">image:</span> <span class="string">wordpress:latest</span></span><br><span class="line">     <span class="attr">ports:</span></span><br><span class="line">       <span class="bullet">-</span> <span class="string">&quot;8000:80&quot;</span></span><br><span class="line">     <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">     <span class="attr">environment:</span></span><br><span class="line">       <span class="attr">WORDPRESS_DB_HOST:</span> <span class="string">db:3306</span></span><br><span class="line">       <span class="attr">WORDPRESS_DB_USER:</span> <span class="string">wordpress</span></span><br><span class="line">       <span class="attr">WORDPRESS_DB_PASSWORD:</span> <span class="string">wordpress</span></span><br><span class="line">       <span class="attr">WORDPRESS_DB_NAME:</span> <span class="string">wordpress</span></span><br><span class="line"><span class="attr">volumes:</span></span><br><span class="line">    <span class="attr">db_data:</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="安装WordPress"><a href="#安装WordPress" class="headerlink" title="安装WordPress"></a>安装WordPress</h4><p>新建一个文件夹，将配置好的 <code>docker-compose.yml</code> 文件复制进文件夹，在该文件夹下输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up -d </span><br></pre></td></tr></table></figure>
+
+<p>等待安装完成即可，安装完成后可以查看容器运行状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+
+<p>容器运行情况如下</p>
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201129114704520.png" alt="image-20201129114704520"></p>
+<p>然后可以在相应端口打开 WordPress 开始配置和撰写博客</p>
+<hr>
+<blockquote>
+<p>参考资料：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV12E41127Uj">个人博客|网站部署终极操作:一行命令搞定!_哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</a>；</li>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/213/8044">云服务器 手动搭建 WordPress 个人站点（Linux） - 最佳实践 - 文档中心 - 腾讯云 (tencent.com)</a>；</li>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/1207/45117">轻量应用服务器 使用应用镜像搭建 WordPress 站点 - 最佳实践 - 文档中心 - 腾讯云 (tencent.com)</a>；</li>
+</ul>
+</blockquote>
+
+    </div>
+     
+    <div class="post-footer__meta"><p>updated at 2020-12-02</p></div> 
+    <div class="post-meta__cats"><a href="/myblog/categories/%E5%AE%9E%E7%94%A8%E6%80%A7-%E9%98%90%E8%BF%B0%E8%A7%84%E5%88%99/" class="post-cats__link button">实用性-阐述规则</a><a href="/myblog/tags/WordPress/" class="post-tags__link button"># WordPress</a><a href="/myblog/tags/%E8%85%BE%E8%AE%AF%E4%BA%91/" class="post-tags__link button"># 腾讯云</a></div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+                <a href="/myblog/2020/11/29/%E6%90%AD%E5%BB%BALNMP/" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                    </div>
+                    <div>
+                        <div class="nav__label">
+                            Previous Post
+                        </div>
+                        <div class="nav__title">
+                            手动搭建LNMP
+                        </div>
+                    </div>
+                </a>
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/myblog/2020/11/28/%E7%94%A8%20Hexo%20%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            用 Hexo 搭建个人静态博客
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+
+
+</main>
+
+            <footer class="footer">
+    
+
+
+    
+     
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2019&nbsp;-&nbsp;2020 <a href="/myblog/">Hexo</a>
+        </p>
+    
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
+  
+
+
+
+ 
+
+
+    
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+    </body>
+</html>

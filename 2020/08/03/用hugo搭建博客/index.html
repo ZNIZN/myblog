@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    
+    
+    
+    
+    
+
+
+    <!-- meta -->
+
+
+<title>用 Hugo 搭建个人静态博客 | Hexo</title>
+
+
+    <meta name="keywords" content="Hugo, GitHub">
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="目录说明 layout目录和themes目录都可以控制皮肤，区别在于：hugo会首先查找layout中是否有皮肤文件，因此不需要指令；对于theme中的文件需要额外的指令，相对更加方便导出传递 static目录存放：images, CSS, JavaScript，etc  生成站点将站点生成到所需路径下 12cd d:&#x2F;hugo&#x2F;siteshugo new site myblog  将路径设置到需">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用 Hugo 搭建个人静态博客">
+<meta property="og:url" content="https://znizn.github.io/myblog/2020/08/03/%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="目录说明 layout目录和themes目录都可以控制皮肤，区别在于：hugo会首先查找layout中是否有皮肤文件，因此不需要指令；对于theme中的文件需要额外的指令，相对更加方便导出传递 static目录存放：images, CSS, JavaScript，etc  生成站点将站点生成到所需路径下 12cd d:&#x2F;hugo&#x2F;siteshugo new site myblog  将路径设置到需">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-08-02T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-12-02T04:48:53.495Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Hugo">
+<meta property="article:tag" content="GitHub">
+<meta name="twitter:card" content="summary_large_image">
+
+
+    
+<link rel="stylesheet" href="/myblog/css/style/main.css">
+ 
+
+
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/myblog/css/highlight/default.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')===-1)this.media='all'">
+        
+    
+
+    
+    
+
+     
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/myblog/" class="button">
+            <span class="logo__text">ONION</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/myblog/" class="navbar-menu button">首页</a>
+                
+                    <a href="/myblog/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/myblog/archives/" class="navbar-menu button">归档</a>
+                
+                    <a href="/myblog/friends/" class="navbar-menu button">友链</a>
+                
+                    <a href="/myblog/page/" class="navbar-menu button">Page</a>
+                
+            </div>
+        
+        
+        
+    <a href="/myblog/search/" id="btn-search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="32"><path d="M192 448c0-141.152 114.848-256 256-256s256 114.848 256 256-114.848 256-256 256-256-114.848-256-256z m710.624 409.376l-206.88-206.88A318.784 318.784 0 0 0 768 448c0-176.736-143.264-320-320-320S128 271.264 128 448s143.264 320 320 320a318.784 318.784 0 0 0 202.496-72.256l206.88 206.88 45.248-45.248z"></path></svg>
+    </a>
+
+
+        
+        
+
+         
+    <a href="#" class="button" id="b2t" aria-label="Back to Top" title="Back to Top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M233.376 722.752L278.624 768 512 534.624 745.376 768l45.248-45.248L512 444.128zM192 352h640V288H192z" fill="currentColor"></path>
+        </svg>
+    </a>
+
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/myblog/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/myblog/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/myblog/archives/" class="dropdown-menu button">归档</a>
+                
+                    <a href="/myblog/friends/" class="dropdown-menu button">友链</a>
+                
+                    <a href="/myblog/page/" class="dropdown-menu button">Page</a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        用 Hugo 搭建个人静态博客
+    </h1>
+    <div class="post-title__meta">
+        <a href="/myblog/archives/2020/08/" class="post-meta__date button">2020-08-03</a>
+        
+    <span class="separate-dot"></span><a href="/myblog/categories/%E5%AE%9E%E7%94%A8%E6%80%A7-%E9%98%90%E8%BF%B0%E8%A7%84%E5%88%99/" class="button">实用性-阐述规则</a>
+
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+    <aside class="post-side">
+        <div class="post-side__toc">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E8%AF%B4%E6%98%8E"><span class="toc-text">目录说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E7%AB%99%E7%82%B9"><span class="toc-text">生成站点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E4%B8%BB%E9%A2%98"><span class="toc-text">设置主题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#clone-%E4%B8%BB%E9%A2%98%E5%88%B0-themes-%E7%9B%AE%E5%BD%95"><span class="toc-text">clone 主题到 themes 目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#layout%E7%9B%AE%E5%BD%95"><span class="toc-text">layout目录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E8%A1%8Chugo"><span class="toc-text">运行hugo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E7%9B%91%E6%B5%8B"><span class="toc-text">动态监测</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E7%BC%96%E5%86%99%E6%96%87%E7%AB%A0"><span class="toc-text">本地编写文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%E5%9C%A8GitHub%E4%B8%8A"><span class="toc-text">部署在GitHub上</span></a></li></ol>
+        </div>
+    </aside>
+    <a class="btn-toc button" id="btn-toc" tabindex="0">
+        <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z" fill="currentColor"></path>
+        </svg>
+    </a>
+    <div class="toc-menus" id="toc-menus">
+        <div class="toc-title">Article Directory</div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E8%AF%B4%E6%98%8E"><span class="toc-text">目录说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E7%AB%99%E7%82%B9"><span class="toc-text">生成站点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E4%B8%BB%E9%A2%98"><span class="toc-text">设置主题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#clone-%E4%B8%BB%E9%A2%98%E5%88%B0-themes-%E7%9B%AE%E5%BD%95"><span class="toc-text">clone 主题到 themes 目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#layout%E7%9B%AE%E5%BD%95"><span class="toc-text">layout目录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E8%A1%8Chugo"><span class="toc-text">运行hugo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E7%9B%91%E6%B5%8B"><span class="toc-text">动态监测</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E7%BC%96%E5%86%99%E6%96%87%E7%AB%A0"><span class="toc-text">本地编写文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%E5%9C%A8GitHub%E4%B8%8A"><span class="toc-text">部署在GitHub上</span></a></li></ol>
+    </div>
+
+
+<article class="post content-card">
+    <div class="post__header">
+    <div class="post__expire" id="post-expired-notify">
+        <p>
+            This article was last updated on &lt;span id=&#34;expire-date&#34;&gt;&lt;/span&gt; days ago, the information described in the article may be outdated.
+        </p>
+    </div>
+    <script>
+        (() => {
+            var update = Date.parse("2020-12-02"),
+                date = new Date(),
+                now = date.getTime(),
+                expire = now - update,
+                expire_days = Math.floor(expire/(24*3600*1000));
+            if (expire_days >= 120) {
+                document.querySelectorAll('#expire-date')[0].innerHTML = expire_days;
+                document.querySelectorAll('#post-expired-notify')[0].style.display = 'block';
+            }
+        })();
+    </script>
+</div>
+    <div class="post__content">
+        <h2 id="目录说明"><a href="#目录说明" class="headerlink" title="目录说明"></a>目录说明</h2><ol>
+<li>layout目录和themes目录都可以控制皮肤，区别在于：hugo会首先查找layout中是否有皮肤文件，因此不需要指令；对于theme中的文件需要额外的指令，相对更加方便导出传递</li>
+<li>static目录存放：images, CSS, JavaScript，etc</li>
+</ol>
+<h2 id="生成站点"><a href="#生成站点" class="headerlink" title="生成站点"></a>生成站点</h2><p>将站点生成到所需路径下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> d:/hugo/sites</span><br><span class="line">hugo new site myblog</span><br></pre></td></tr></table></figure>
+<ol>
+<li>将路径设置到需要添加blog的位置</li>
+<li>使用hugo new site命令生成blog</li>
+<li>设置blog文件夹的名称</li>
+</ol>
+<p>在public目录下生成网站的方式</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hugo</span><br></pre></td></tr></table></figure>
+<p>它会将你的网站设置和内容生成到public目录下，为后面的部署做准备</p>
+<h2 id="设置主题"><a href="#设置主题" class="headerlink" title="设置主题"></a>设置主题</h2><h3 id="clone-主题到-themes-目录"><a href="#clone-主题到-themes-目录" class="headerlink" title="clone 主题到 themes 目录"></a>clone 主题到 themes 目录</h3><ol>
+<li><p>在 <a target="_blank" rel="noopener" href="https://themes.gohugo.io/">主题列表</a> 中，找到自己喜欢的主题，将主题添加到themes目录下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> themes</span><br><span class="line">git <span class="built_in">clone</span> 主题网址</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>在 clone 的时候要将主题文件 clone 到 themes 目录下。也可以自己复制到对应目录。</li>
+<li>这里的命令在主题的网页中有，可以直接复制。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>对于一些提供 example site 的主题，可以将文件中的 example site 目录下的文件复制并覆盖掉源blog下的文件</p>
+<h3 id="layout目录"><a href="#layout目录" class="headerlink" title="layout目录"></a>layout目录</h3></li>
+<li><p>layout 目录可以承载以 <code>.html</code> 为格式的模板</p>
+</li>
+<li><p>模板类型包括：single page、partials、list pages、homepage、taxonomy templates</p>
+</li>
+</ol>
+<h2 id="运行hugo"><a href="#运行hugo" class="headerlink" title="运行hugo"></a>运行hugo</h2><p>执行hugo命令进行调试</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hugo server --theme=主题名称 --buildDrafts</span><br></pre></td></tr></table></figure>
+<p>调试完成后可以在本地的 <a target="_blank" rel="noopener" href="http://localhost:1313/">local host</a> 上打开</p>
+<h2 id="动态监测"><a href="#动态监测" class="headerlink" title="动态监测"></a>动态监测</h2><p>hugo 在运行网站后，能够动态的调整网站内容，只需要将修改的文件保存后，效果就会在网站上动态显示出来</p>
+<p>关闭动态监测的方式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hugo server --watch=<span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">hugo server --disableLiveReload</span><br></pre></td></tr></table></figure>
+<p>这个方法同样可以通过在 <code>config.toml</code> 或 <code>config.yml</code> 中加入以下任意语句达成</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">disableLiveReload = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">disableLiveReload ： <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h2 id="本地编写文章"><a href="#本地编写文章" class="headerlink" title="本地编写文章"></a>本地编写文章</h2><p>在 post 目录下生成 markdown 文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hugo new post/blog.md</span><br></pre></td></tr></table></figure>
+<p>如果只需要创建在 content 下，可以直接生成而不必指明路径</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hugo new blog.md</span><br></pre></td></tr></table></figure>
+
+<h2 id="部署在GitHub上"><a href="#部署在GitHub上" class="headerlink" title="部署在GitHub上"></a>部署在GitHub上</h2><ol>
+<li>在GitHub上创建一个仓库，并设置好命名和描述——比如将仓库命名为 blog</li>
+<li>在仓库设置中打开 GitHub Pages 设置，并复制生成的 GitHub Pages 网址</li>
+<li>在站点根目录执行 hugo 命令，生成最终页面<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hugo --theme=主题名称 --baseUrl=<span class="string">&quot;GitHub Pages 网址&quot;</span></span><br></pre></td></tr></table></figure>
+完成后，所有的静态页面都会生成public目录</li>
+<li>将public目录下所有文件push到刚建立的repository的master分支下<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> public</span><br><span class="line">git init</span><br><span class="line">git remote add origin https://github.com/用户名/仓库名.git</span><br><span class="line">git add -A</span><br><span class="line">git commit -m <span class="string">&quot;fist commit&quot;</span></span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>然后在对应的 GitHub Pages 可以打开我们的个人博客</p>
+<hr>
+<blockquote>
+<p>参考资料：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1q4411i7gL">哔哩哔哩：手把手教你从0开始搭建自己的个人博客</a>；</li>
+<li><a target="_blank" rel="noopener" href="https://v3u.cn/a_id_81">利用基于Go Lang的Hugo配合nginx来打造属于自己的纯静态博客系统 (v3u.cn)</a>；</li>
+<li><a target="_blank" rel="noopener" href="https://themes.gohugo.io/hugo-theme-introduction/">Hugo Theme Introduction | Hugo Themes (gohugo.io)</a>；</li>
+<li><a target="_blank" rel="noopener" href="https://www.gohugo.org/">Hugo中文文档 (gohugo.org)</a>；</li>
+</ul>
+</blockquote>
+
+    </div>
+     
+    <div class="post-footer__meta"><p>updated at 2020-12-02</p></div> 
+    <div class="post-meta__cats"><a href="/myblog/categories/%E5%AE%9E%E7%94%A8%E6%80%A7-%E9%98%90%E8%BF%B0%E8%A7%84%E5%88%99/" class="post-cats__link button">实用性-阐述规则</a><a href="/myblog/tags/Hugo/" class="post-tags__link button"># Hugo</a><a href="/myblog/tags/GitHub/" class="post-tags__link button"># GitHub</a></div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+                <a href="/myblog/2020/11/12/TT-RSS%EF%BC%9A%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                    </div>
+                    <div>
+                        <div class="nav__label">
+                            Previous Post
+                        </div>
+                        <div class="nav__title">
+                            用阿里云部署 Tiny Tiny RSS
+                        </div>
+                    </div>
+                </a>
+            
+        </div>
+        <div class="nav__next">
+            
+        </div>
+    </div>
+
+
+
+
+
+</main>
+
+            <footer class="footer">
+    
+
+
+    
+     
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2019&nbsp;-&nbsp;2020 <a href="/myblog/">Hexo</a>
+        </p>
+    
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
+  
+
+
+
+ 
+
+
+    
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+    </body>
+</html>
