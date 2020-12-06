@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    
+    
+    
+    
+    
+
+
+    <!-- meta -->
+
+
+<title>Tiny Tiny RSS 在桌面端和移动端的优化方案 | Hexo</title>
+
+
+    <meta name="keywords" content="Tiny Tiny RSS, RSS Tracker, Unread">
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="RSS Tracker 优化桌面端阅读体验下载 RSS Tracker下载地址：https:&#x2F;&#x2F;www.microsoft.com&#x2F;store&#x2F;apps&#x2F;9N85PV1RJD6V RSS Tracker 提供试用版本，为期七天。 配置 Fever在部署好的 Tiny Tiny RSS  中开启 Fever API，先在插件目录下打开 Fever 插件  保存后可以在下方的 Fever Emulat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tiny Tiny RSS 在桌面端和移动端的优化方案">
+<meta property="og:url" content="https://znizn.github.io/myblog/2020/12/04/%E4%BD%BF%E7%94%A8%20RSS%20Tracker%20%E5%88%9B%E5%BB%BA%20RSS%20%E6%A1%8C%E9%9D%A2%E5%BA%94%E7%94%A8/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="RSS Tracker 优化桌面端阅读体验下载 RSS Tracker下载地址：https:&#x2F;&#x2F;www.microsoft.com&#x2F;store&#x2F;apps&#x2F;9N85PV1RJD6V RSS Tracker 提供试用版本，为期七天。 配置 Fever在部署好的 Tiny Tiny RSS  中开启 Fever API，先在插件目录下打开 Fever 插件  保存后可以在下方的 Fever Emulat">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201206190604247.png">
+<meta property="article:published_time" content="2020-12-03T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-12-06T11:06:25.515Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Tiny Tiny RSS">
+<meta property="article:tag" content="RSS Tracker">
+<meta property="article:tag" content="Unread">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gitee.com/zhuo1121/pictures/raw/master/image-20201206190604247.png">
+
+
+    
+<link rel="stylesheet" href="/myblog/css/style/main.css">
+ 
+
+
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/myblog/css/highlight/default.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')===-1)this.media='all'">
+        
+    
+
+    
+    
+
+     
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/myblog/" class="button">
+            <span class="logo__text">ONION</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/myblog/" class="navbar-menu button">首页</a>
+                
+                    <a href="/myblog/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/myblog/archives/" class="navbar-menu button">归档</a>
+                
+            </div>
+        
+        
+        
+    <a href="/myblog/search/" id="btn-search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="32"><path d="M192 448c0-141.152 114.848-256 256-256s256 114.848 256 256-114.848 256-256 256-256-114.848-256-256z m710.624 409.376l-206.88-206.88A318.784 318.784 0 0 0 768 448c0-176.736-143.264-320-320-320S128 271.264 128 448s143.264 320 320 320a318.784 318.784 0 0 0 202.496-72.256l206.88 206.88 45.248-45.248z"></path></svg>
+    </a>
+
+
+        
+        
+
+         
+    <a href="#" class="button" id="b2t" aria-label="Back to Top" title="Back to Top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M233.376 722.752L278.624 768 512 534.624 745.376 768l45.248-45.248L512 444.128zM192 352h640V288H192z" fill="currentColor"></path>
+        </svg>
+    </a>
+
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/myblog/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/myblog/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/myblog/archives/" class="dropdown-menu button">归档</a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        Tiny Tiny RSS 在桌面端和移动端的优化方案
+    </h1>
+    <div class="post-title__meta">
+        <a href="/myblog/archives/2020/12/" class="post-meta__date button">2020-12-04</a>
+        
+    <span class="separate-dot"></span><a href="/myblog/categories/%E5%AE%9E%E7%94%A8%E6%80%A7-%E9%98%90%E8%BF%B0%E8%A7%84%E5%88%99/" class="button">实用性-阐述规则</a>
+
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+    <aside class="post-side">
+        <div class="post-side__toc">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#RSS-Tracker-%E4%BC%98%E5%8C%96%E6%A1%8C%E9%9D%A2%E7%AB%AF%E9%98%85%E8%AF%BB%E4%BD%93%E9%AA%8C"><span class="toc-text">RSS Tracker 优化桌面端阅读体验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD-RSS-Tracker"><span class="toc-text">下载 RSS Tracker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-Fever"><span class="toc-text">配置 Fever</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E7%94%A8-Fever-API-%E4%B8%8E%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE"><span class="toc-text">启用 Fever API 与相关配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Unread-%E4%BC%98%E5%8C%96%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%98%85%E8%AF%BB%E4%BD%93%E9%AA%8C"><span class="toc-text">Unread 优化移动端阅读体验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD-Unread"><span class="toc-text">下载 Unread</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8-Fever-API"><span class="toc-text">启动 Fever API</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol>
+        </div>
+    </aside>
+    <a class="btn-toc button" id="btn-toc" tabindex="0">
+        <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z" fill="currentColor"></path>
+        </svg>
+    </a>
+    <div class="toc-menus" id="toc-menus">
+        <div class="toc-title">Article Directory</div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#RSS-Tracker-%E4%BC%98%E5%8C%96%E6%A1%8C%E9%9D%A2%E7%AB%AF%E9%98%85%E8%AF%BB%E4%BD%93%E9%AA%8C"><span class="toc-text">RSS Tracker 优化桌面端阅读体验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD-RSS-Tracker"><span class="toc-text">下载 RSS Tracker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-Fever"><span class="toc-text">配置 Fever</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E7%94%A8-Fever-API-%E4%B8%8E%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE"><span class="toc-text">启用 Fever API 与相关配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Unread-%E4%BC%98%E5%8C%96%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%98%85%E8%AF%BB%E4%BD%93%E9%AA%8C"><span class="toc-text">Unread 优化移动端阅读体验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD-Unread"><span class="toc-text">下载 Unread</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8-Fever-API"><span class="toc-text">启动 Fever API</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol>
+    </div>
+
+
+<article class="post content-card">
+    <div class="post__header">
+    
+        <div class="post-thumbnail" style="background-image: url('https://gitee.com/zhuo1121/pictures/raw/master/image-20201206190604247.png');"></div>
+    
+
+    <div class="post__expire" id="post-expired-notify">
+        <p>
+            This article was last updated on &lt;span id=&#34;expire-date&#34;&gt;&lt;/span&gt; days ago, the information described in the article may be outdated.
+        </p>
+    </div>
+    <script>
+        (() => {
+            var update = Date.parse("2020-12-06"),
+                date = new Date(),
+                now = date.getTime(),
+                expire = now - update,
+                expire_days = Math.floor(expire/(24*3600*1000));
+            if (expire_days >= 120) {
+                document.querySelectorAll('#expire-date')[0].innerHTML = expire_days;
+                document.querySelectorAll('#post-expired-notify')[0].style.display = 'block';
+            }
+        })();
+    </script>
+</div>
+    <div class="post__content">
+        <h2 id="RSS-Tracker-优化桌面端阅读体验"><a href="#RSS-Tracker-优化桌面端阅读体验" class="headerlink" title="RSS Tracker 优化桌面端阅读体验"></a>RSS Tracker 优化桌面端阅读体验</h2><h3 id="下载-RSS-Tracker"><a href="#下载-RSS-Tracker" class="headerlink" title="下载 RSS Tracker"></a>下载 RSS Tracker</h3><p>下载地址：<a target="_blank" rel="noopener" href="https://www.microsoft.com/store/apps/9N85PV1RJD6V">https://www.microsoft.com/store/apps/9N85PV1RJD6V</a></p>
+<p>RSS Tracker 提供试用版本，为期七天。</p>
+<h3 id="配置-Fever"><a href="#配置-Fever" class="headerlink" title="配置 Fever"></a>配置 Fever</h3><p>在部署好的 Tiny Tiny RSS  中开启 Fever API，先在插件目录下打开 Fever 插件</p>
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201204125533127.png" alt="image-20201204125533127"></p>
+<p>保存后可以在下方的 Fever Emulation 中设置 Fever API 的密码</p>
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201204125637258.png" alt="image-20201204125637258"></p>
+<h3 id="启用-Fever-API-与相关配置"><a href="#启用-Fever-API-与相关配置" class="headerlink" title="启用 Fever API 与相关配置"></a>启用 Fever API 与相关配置</h3><p>选择 Fever 的登录选项</p>
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201204125842108.png" alt="image-20201204125842108"></p>
+<p>在登录界面中输入 Fever API 的地址，比如我的是 <code>http://www.zhuottrss.top/plugins/fever/</code>。账号名称为 <code>admin</code> ，密码为刚才在 Tiny Tiny RSS 中配置的密码</p>
+<img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201204130050504.png" alt="image-20201204130050504" style="zoom: 67%;" />
+
+
+
+<p>登录结果如下图所示，点击【Confirmed &amp; Next】进入下一项配置</p>
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201204130132136.png" alt="image-20201204130132136"></p>
+<p>设置软件的基础配置，点击【Confirmed &amp; Next】即可完成全部的配置</p>
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201204130326267.png" alt="image-20201204130326267"></p>
+<p>结果展示如下：</p>
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201204130436854.png" alt="image-20201204130436854"></p>
+<h2 id="Unread-优化移动端阅读体验"><a href="#Unread-优化移动端阅读体验" class="headerlink" title="Unread 优化移动端阅读体验"></a>Unread 优化移动端阅读体验</h2><h3 id="下载-Unread"><a href="#下载-Unread" class="headerlink" title="下载 Unread"></a>下载 Unread</h3><p>可以支持 Fever API 的有 Feeder 和 Unread，由于第一款软件无法在国服 APP store 下载到，因此选择 Unread 作为移动端阅读软件。</p>
+<h3 id="启动-Fever-API"><a href="#启动-Fever-API" class="headerlink" title="启动 Fever API"></a>启动 Fever API</h3><p>软件打开后如下图所示，其中的 Fever 是已经配置完成的结果。点击其中的【ADD AN ACCONT】</p>
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201206174721558.png" alt="image-20201206174721558"></p>
+<p>呼出菜单中选择【FEVER】</p>
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201206174806512.png" alt="image-20201206174806512"></p>
+<p>填入 TTRSS 的网址，然后点击【NEXT】后填入上面创建的账号和密码</p>
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201206174859354.png" alt="image-20201206174859354"></p>
+<p>配置完成后结果如下：</p>
+<p><img src="https://gitee.com/zhuo1121/pictures/raw/master/image-20201206175014255.png" alt="image-20201206175014255"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>根据目前的使用体验来看，RSS Tracker 有如下优缺点</p>
+<p>优点：</p>
+<ul>
+<li>优化阅读体验，更好的信息流展示方式和阅读方式</li>
+<li>提供翻译服务</li>
+<li>提供朗读服务</li>
+<li>提供更方便的全文抓取服务</li>
+<li>更好的视觉效果</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>部分文章全文抓取速度相比 mercury 要慢</li>
+<li>列表视图在笔记本上的体验稍差，无法自定义列表和原文的显示大小</li>
+<li>订阅新源需要回到 Tiny Tiny RSS </li>
+<li>没有【已收藏】的图标</li>
+</ul>
+<p>由于体验时间很短因此难免有疏漏，有些问题可能源于对软件理解不足，有些则会随着软件更新得到解决。整体而言，RSS Tracker 提供了相当完整的 RSS 阅读服务，很大程度优化了桌面客户端的阅读体验。</p>
+<hr>
+<blockquote>
+<p>参考资料：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.richasy.cn/document/rss/use.html">软件使用说明 | 云乡 (richasy.cn)</a>；</li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Lt4y1Q7Be">【UWP】有趣的RSS阅读器，RSS追踪全新版本上线_哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</a>；</li>
+<li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000020180496">Tiny Tiny RSS + fever 搭建自己的 RSS 服务_前端博客 - SegmentFault 思否</a>；</li>
+</ul>
+</blockquote>
+
+    </div>
+     
+    <div class="post-footer__meta"><p>updated at 2020-12-06</p></div> 
+    <div class="post-meta__cats"><a href="/myblog/categories/%E5%AE%9E%E7%94%A8%E6%80%A7-%E9%98%90%E8%BF%B0%E8%A7%84%E5%88%99/" class="post-cats__link button">实用性-阐述规则</a><a href="/myblog/tags/Tiny-Tiny-RSS/" class="post-tags__link button"># Tiny Tiny RSS</a><a href="/myblog/tags/RSS-Tracker/" class="post-tags__link button"># RSS Tracker</a><a href="/myblog/tags/Unread/" class="post-tags__link button"># Unread</a></div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/myblog/2020/11/29/%E6%90%AD%E5%BB%BALNMP/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            手动搭建LNMP
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+
+
+</main>
+
+            <footer class="footer">
+    
+
+
+    
+     
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2019&nbsp;-&nbsp;2020 <a href="/myblog/">Hexo</a>
+        </p>
+    
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
+  
+
+
+
+ 
+
+
+    
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+    </body>
+</html>
